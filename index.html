@@ -10,6 +10,19 @@
     gtag('js', new Date());
 
   </script>
+    <style>
+      .image-row {
+          display: flex;
+          justify-content: space-between; /* Ensures images are spaced evenly */
+          align-items: center;
+          margin-top: 20px;
+      }
+      .image-row img {
+          flex-grow: auto; /* Allows each image to grow */
+          max-width: 35%; /* Limits the width of each image to one-third of the container */
+          height: auto; /* Maintains aspect ratio */
+      }
+  </style>
 
   <meta charset="utf-8">
   <meta name="description" content="CinePile: A Long Video Question Answering Dataset and Benchmark">
@@ -100,11 +113,31 @@
             <div class="is-size-5">
               <span class="author-block">
                 <a href="https://ruchitrawal.github.io/" style="color:#008AD7;font-weight:normal;">Ruchit Rawal</a>,
+                </span>
+              <span class="author-block">
+                <a href="" style="color:#008AD7;font-weight:normal;">Khalid Saifullah</a>,
+                </span>
+              <span class="author-block">
+                  <a href="" style="color:#f68946;font-weight:normal;">Ronen Basri</a>,
+                  </span>
+                  <span class="author-block">
+                    <a href="" style="color:#008AD7;font-weight:normal;">David Jacobs</a>,
+                    </span>
             </div>
+            <div class="is-size-5">
+              <span class="author-block">
+                <a href="" style="color:#008AD7;font-weight:normal;">Gowthami Somepalli<sup>*</sup></a>,
+                </span>
+              <span class="author-block">
+                <a href="" style="color:#008AD7;font-weight:normal;">Tom Goldstein<sup>*</sup></a>,
+                </span>
+            </div>
+            
   
             <br>
             <div class="is-size-5 publication-authors">
               <span class="author-block"><b style="color:#008AD7; font-weight:normal">▶ </b>University of Maryland, College Park</span>
+              <span class="author-block"><b style="color:#f68946; font-weight:normal">▶ </b>Weizmann Institute of Science</span>
               <span class="author-block">&nbsp;&nbsp;<sup>*</sup>Equal Contribution</span>
             </div>
 
@@ -156,9 +189,11 @@
     <div class="hero-body">
       <h2 class="subtitle has-text-centered">
       
-      We present CinePile, a long-form video understanding dataset, created using advanced large language models (LLMs) with human-in-the-loop pipeline leveraging existing human-generated raw data. It consists of approximately <b>300,000</b> training data points and <b>5,000</b> test data points.
-  
-      <img src="./static/images/teaser_figure.png" alt="teaser">
+        <div style="padding-bottom: 5px;">
+          We present CinePile, a long-form video understanding dataset, created using advanced large language models (LLMs) with human-in-the-loop pipeline leveraging existing human-generated raw data.
+      </div>
+      
+      <img src="./static/images/teaser_figure.png" alt="teaser" style="display: block; margin-top: 5px;">      
 
       
 
@@ -169,69 +204,11 @@
         color: blue;
       }
     </style>
-    Our dataset consists of Multiple-Choice Questions across 86 diverse question templates, e.g., <i>Emotional Transition</i>, <i>Object's Description</i>, etc.
-
+<p>Our dataset comprises Multiple-Choice Questions across 86 diverse question templates, such as <em>Emotional Transition</em>, <em>Object's Description</em>, etc., generated automatically using Gemini. These templates are categorized into five high-level categories: Character and Relationship Dynamics (CRD), Narrative and Plot Analysis (NPA), Thematic Exploration (TE), Setting and Technical Analysis (STA), and Temporal (TE).</p>
 </h3>
 
 
     </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Although large language models (LLMs) are widely deployed, the data used to train them is rarely disclosed.
-            Given the
-            incredible scale of this data, up to trillions of tokens, it's nearly certain it includes potentially
-            problematic
-            text such as copyrighted materials, personally identifiable information, and test data for widely reported
-            reference
-            benchmarks. However, we currently lack knowledge on which data of these types is included or in what
-            proportions.
-          </p>
-
-           <li><b>Pretraining Ddata detection problem</b>. In this paper, we explore the pretraining data detection problem<span>&#x1F575;&#xFE0F;</span>: given a piece of
-            text and
-            black-box access to an LLM without knowing the pretraining data, can we determine if the model was trained
-            on the
-            provided text? 
-            
-            <li><b>Dynamic benchmark WikiMIA</b>. To aid this study, we present <b><a href="https://huggingface.co/datasets/swj0419/WikiMIA"
-                target="_blank">
-                a dynamic benchmark WikiMIA</a></b> <span>&#128214;</span> that uses data created both before and
-            after model training
-            to support gold truth detection.
-
-          <li><b>Detection method Min-K% Prob</b>. We also design a new <b><a href="https://github.com/swj0419/detect-pretrain-code" target="_blank">detection
-                method Min-K%
-                Prob</a></b> <img src="static/images/min-k_icon.png" alt="Min-K Icon" style="width:25px; height:25px;">. This is built
-            on a straightforward
-            hypothesis: an unobserved example is more likely to have a few outlier words with low probabilities under
-            the LLM,
-            while a recognized example is less inclined to contain words with such reduced probabilities. Min-K% Prob
-            operates
-            without any insight into the pretraining corpus or any extra training, distinguishing it from past detection
-            strategies
-            that necessitate educating a reference model on data analogous to the pretraining data. Furthermore, our
-            tests indicate
-            that Min-K% Prob delivers a 7.4% enhancement on WikiMIA relative to these preceding techniques. 
-
-            <li><b>Real-life use cases</b>. We employ
-            Min-K% Prob in
-            three real-life contexts: <strong>benchmark example contamination detection</strong>,
-            <a href="#privacy-auditing"><strong>privacy auditing of machine unlearning</strong></a>,
-            and <a href="#copyrighted-detection"><strong>copyrighted text detection</strong></a> in language models' pretraining
-            data.
-        </div>
-      </div>
-    </div>
-    <!--/ Abstract. -->
   </div>
 </section>
 
@@ -241,32 +218,27 @@
     <!-- Abstract -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Detection Method Min-K% Prob</h2>
+        <h2 class="title is-3">A look at the dataset</h2>
         <div class="content has-text-justified">
           <p>
-            <strong>What is Min-K% Prob?</strong><br>
-            We propose a pretraining data detection method named Min-K% Prob. Our method is based on a simple
-            hypothesis: an unseen example tends to contain a few outlier words with low probabilities, whereas a seen
-            example is less likely to contain words with such low probabilities. MIN-K% Prob computes the average
-            probabilities of outlier tokens.
+            <strong>Collecting video clips</strong><br>
+            We divided 9,396 movie clips sourced from the <a href='https://www.youtube.com/@MOVIECLIPS'>Movieclips YouTube channel</a> into training and testing splits, containing 9,248 and 148 videos respectively. Following our question-answer generation and filtering pipeline, we produced <b>298,888 training points and 4,940 test-set points</b>, averaging about 32 questions per video scene.
           </p>
-
           <p>
-            <strong>How to use Min-K% Prob?</strong><br>
-            To check if a text was in LLM's pretraining:
-          <ol>
-            <li>Evaluate token probabilities in the text.</li>
-            <li>Pick the k% tokens with minimum probabilities.</li>
-            <li>Compute their average log likelihood.</li>
-          </ol>
-          If the average log likelihood is high, the text is likely in the pretraining data. ✅
+            <strong>Dataset statistics</strong><br>
+            For each question, we provide additional information, such as whether the questions are particularly challenging to answer (hardness) or if they require visual information (visual reliance) for an accurate response. 
           </p>
-
-<a href="https://arxiv.org/pdf/2310.16789.pdf" target="_blank">See more results in our paper</a>
         </div>
+
+  
       </div>
     </div>
     <!--/ Abstract -->
+    <div class="image-row">
+      <img src="./static/images/question_theme_dist.png" alt="Distribution of Question Themes">
+      <img src="./static/images/hardness_stat.png" alt="Statistics on Question Hardness">
+      <img src="./static/images/vision_reliance_stat.png" alt="Statistics on Vision Reliance">
+  </div>
   </div>
 </section>
 
@@ -275,28 +247,17 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3" id="privacy-auditing">Auditing machine unlearning with Min-K% Prob</h2>
+        <h2 class="title is-3" id="privacy-auditing">Model evaluation</h2>
         <div class="content has-text-justified">
           <p>
-            <strong>Machine Unlearning</strong><br>
-            <a href="https://www.microsoft.com/en-us/research/project/physics-of-agi/articles/whos-harry-potter-making-llms-forget-2/"> Recent work from MSR </a> shows how LLMs can unlearn copyrighted training data via strategic fine-tuning.
-            They made Llama2-7B-chat unlearn the entire Harry Potter magical world and released it as
-            <a href="https://huggingface.co/microsoft/Llama2-7b-WhoIsHarryPotter">Llama2-7B-WhoIsHarryPotter</a> for
-            scrutiny.
-            But with our Min-K% Prob technique, we've found that some “magical traces” still remain, producing Harry
-            Potter content! 🧙‍♂️🔮
+            <strong>Model evaluation strategy</strong><br>
+            Given that our dataset is of type multiple-choice question answers (MCQs), we evaluate a given model’s performance on our benchmark questions by measuring its ability to accurately select the right answer from a set of multiple-choice options, containing only one correct answer and four distractors. Our evaluation method incorporates a two-stage process to first reliably extract the selected choice from a model's response, and then compare whether the extracted response matches the correct answer key.
           </p>
           <p>
-            <img src="./static/images/unlearn_full.png"
-              alt="Graph depicting the process of unlearning Harry Potter content">
+            <strong> Evaluation Results </strong> <br>
+            Among the various commercial VLMs analyzed, GPT-4o, GPT-4 Vision and Gemini 1.5 Pro (Video) emerge as top performers, each achieving around 60% average performance. We note that all the models observe a drop of 15%-20% when evaluated on the hard split.
           </p>
-          <p>
-            <strong> Auditing machine unlearning with Min-K% Prob </strong> <br>
-            The unlearned model LLaMA2-7B-WhoIsHarryPotter answers the questions related to Harry
-              Potter correctly. We manually cross-checked these responses against the Harry Potter book series
-            for verification.<br>
-            <img src="./static/images/unlearn_result.png" alt="Results showing the unlearned model's responses">
-          </p>
+          <img src="static/images/eval_table.png">
         </div>
       </div>
     </div>
@@ -304,189 +265,7 @@
 </section>
 
 
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <!-- <h2 class="title is-3" id="copyrighted-detection">Copyrighted Book Detection</h2> -->
-        <h2 class="title is-3" id="copyrighted-detection">Detecting Copyrighted Books in LLMs with Min-K% Prob</h2>
-        <div class="content has-text-justified">
-
-        <!-- <title>Top 20 Copyrighted Books in GPT-3's (text-davinci-003) Pretraining Data detected by Min-K% Prob</title> -->
-        <style>
-          table {
-            width: 100%;
-            border-collapse: collapse;
-          }
-
-          table,
-          th,
-          td {
-            border: 1px solid black;
-          }
-
-          th,
-          td {
-            padding: 8px;
-            text-align: left;
-          }
-
-          th {
-            background-color: #f2f2f2;
-          }
-        </style>
-      </head>
-
-      <body>
-
-        <table>
-          <caption><b style="color: red;">Top 20 Copyrighted Books in GPT-3's pretraining data (text-davinci-003) detected by Min-K%
-            Prob</b> (Min-K% Prob achieves AUC score of 0.87 on the validation data). The listed contamination rate represents the
-            percentage of text excerpts from each book identified in the pretraining data.</caption>
-          <thead>
-            <tr>
-              <th>Contamination %</th>
-              <th>Book Title</th>
-              <th>Author</th>
-              <th>Year</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>100</td>
-              <td>The Violin of Auschwitz</td>
-              <td>Maria Àngels Anglada</td>
-              <td>2010</td>
-            </tr>
-            <tr>
-              <td>100</td>
-              <td>North American Stadiums</td>
-              <td>Grady Chambers</td>
-              <td>2018</td>
-            </tr>
-            <tr>
-              <td>100</td>
-              <td>White Chappell Scarlet Tracings</td>
-              <td>Iain Sinclair</td>
-              <td>1987</td>
-            </tr>
-            <tr>
-              <td>100</td>
-              <td>Lost and Found</td>
-              <td>Alan Dean</td>
-              <td>2001</td>
-            </tr>
-            <tr>
-              <td>100</td>
-              <td>A Different City</td>
-              <td>Tanith Lee</td>
-              <td>2015</td>
-            </tr>
-            <tr>
-              <td>100</td>
-              <td>Our Lady of the Forest</td>
-              <td>David Guterson</td>
-              <td>2003</td>
-            </tr>
-            <tr>
-              <td>100</td>
-              <td>The Expelled</td>
-              <td>Mois Benarroch</td>
-              <td>2013</td>
-            </tr>
-            <tr>
-              <td>99</td>
-              <td>Blood Cursed</td>
-              <td>Archer Alex</td>
-              <td>2013</td>
-            </tr>
-            <tr>
-              <td>99</td>
-              <td>Genesis Code: A Thriller of the Near Future</td>
-              <td>Jamie Metzl</td>
-              <td>2014</td>
-            </tr>
-            <tr>
-              <td>99</td>
-              <td>The Sleepwalker's Guide to Dancing</td>
-              <td>Mira Jacob</td>
-              <td>2014</td>
-            </tr>
-            <tr>
-              <td>99</td>
-              <td>The Harlan Ellison Hornbook</td>
-              <td>Harlan Ellison</td>
-              <td>1990</td>
-            </tr>
-            <tr>
-              <td>99</td>
-              <td>The Book of Freedom</td>
-              <td>Paul Selig</td>
-              <td>2018</td>
-            </tr>
-            <tr>
-              <td>99</td>
-              <td>Three Strong Women</td>
-              <td>Marie NDiaye</td>
-              <td>2009</td>
-            </tr>
-            <tr>
-              <td>99</td>
-              <td>The Leadership Mind Switch: Rethinking How We Lead in the New World of Work</td>
-              <td>D. A. Benton, Kylie Wright-Ford</td>
-              <td>2017</td>
-            </tr>
-            <tr>
-              <td>99</td>
-              <td>Gold</td>
-              <td>Chris Cleave</td>
-              <td>2012</td>
-            </tr>
-            <tr>
-              <td>99</td>
-              <td>The Tower</td>
-              <td>Simon Clark</td>
-              <td>2005</td>
-            </tr>
-            <tr>
-              <td>98</td>
-              <td>Amazon</td>
-              <td>Bruce Parry</td>
-              <td>2009</td>
-            </tr>
-            <tr>
-              <td>98</td>
-              <td>Ain't It Time We Said Goodbye: The Rolling Stones on the Road to Exile</td>
-              <td>Robert Greenfield</td>
-              <td>2014</td>
-            </tr>
-            <tr>
-              <td>98</td>
-              <td>Page One</td>
-              <td>David Folkenflik</td>
-              <td>2011</td>
-            </tr>
-            <tr>
-              <td>98</td>
-              <td>Road of Bones: The Siege of Kohima 1944</td>
-              <td>Fergal Keane</td>
-              <td>2010</td>
-            </tr>
-          </tbody>
-        </table>
-
-      </body>
-
-      </html>
-
-    </div>
-  </div>
-</section>
-
-
-      <section class="section is-light" id="BibTeX">
+      <!-- <section class="section is-light" id="BibTeX">
         <div class="container is-max-desktop content">
           <h2 class="title">BibTeX</h2>
           <pre><code>
@@ -501,7 +280,7 @@ primaryClass={cs.CL}
 }
 </code></pre>
         </div>
-      </section>
+      </section> -->
 
 
 
